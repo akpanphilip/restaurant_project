@@ -3,16 +3,90 @@
     margin: 0;
     padding: 0;
 }
-:root {
-    --wClr: #ffffff;
-    --bClr: #000000;
+.topdiv {
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    /* transform: translateY(5%); */
+    font-weight: bold;
 }
-.navbar {
-    background: tomato;
-    box-shadow: 0 0 5px var(--bClr);
+.navbar img {
     height: 70px;
+    background-color: white;
 }
 .nav-link {
-    color: var(--bClr);
-    font-family: "Play", sans-serif;
+    color: teal;
+}
+.carousel-item img {
+    height: 460px;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: teal;
+}
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+    background-color: grey;
+    opacity: 50%;
+    height: 40%;
+}
+.account {
+    background-color: teal;
+    color: white;
+    padding: 9px;
+    border-radius: 5px;
+}
+.bestFoodText {
+    text-align: center;
+    font-size: 33px;
+    color: teal;
+    font-weight: bold;
+    text-shadow: 0 4px 2px grey;
+}
+.spantext {
+    color: tomato;
+    font-size: 33px;
+}
+.container-mealbox {
+    padding-bottom: 20px;
+}
+.mealbox {
+    width: 100%;
+    height: 300px;
+    border: 1px solid black;
+}
+.mealImg,
+.mealDesc,
+.orderBtn {
+    border: 1px solid black;
+}
+.mealImg {
+    height: 65%;
+}
+.mealImg img {
+    width: 100%;
+    height: 100%;
+}
+.mealDesc {
+    height: 20%;
+}
+.orderBtn {
+    height: 15%;
+}
+/* navbar media query */
+@media screen and (min-width: 1200px) {
+    .navbar {
+        width: 95%;
+        min-height: 80px;
+        margin: auto;
+        padding-top: 0;
+        border: 5px solid teal;
+    }
+    .carousel {
+        width: 92%;
+        margin: 30px auto;
+    }
 }

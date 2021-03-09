@@ -10,6 +10,10 @@
 <body>
     <h2>User dashboard</h2>
     <p>Ready to build</p>
+    <form action="{{'/admin/dashboard'}}" method="post">
+        @csrf
+        <button class="btn btn-danger" type="submit">Logout</button>
+    </form>
 </body>
 
 </html>

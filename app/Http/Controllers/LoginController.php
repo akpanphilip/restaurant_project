@@ -9,6 +9,10 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['guest']);
+    }
     public function index()
     {
         return view('login');
@@ -19,43 +23,18 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        
+        $credentials = $request->only('email', 'password', 'status');
+        if (Auth::attempt($credentials)) {
+            if (auth()->user()->status === "1") {
 
-        // if (!auth()->user($request->only('email', 'password'))) {
-        //     return back()->with('status', 'Invalid login details');
-        // }
-
-        // return redirect()->route('dashboard');
-        // $credentials = $request->only('email', 'password');
-
-        // $credentials = $request->only('email', 'password');
-
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     return redirect()->intended('/admin/dashboard');
-        // }
-
-
-
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->passwprd,
-            'status' => 1
-        ])) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/admin/dashboard');
-        } elseif (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->passwprd,
-            'status' => 0
-        ])) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/user');
+                $request->session()->regenerate();
+                return redirect()->intended('/admin/dashboard');
+            } else {
+                $request->session()->regenerate();
+                return redirect()->intended('user');
+            }
         }
-
-
         return back()->with('status', 'Invalid login details');
     }
 }

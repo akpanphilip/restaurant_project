@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminDashboard;
+use App\Http\Controllers\BestMeals;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -20,8 +22,14 @@ Route::post('/login', [LoginController::class, 'store'])->name('login');
 
 Route::get('/admin/dashboard', [AdminDashboard::class, 'index']);
 
-Route::get('/admin/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+Route::get('/admin/dashboard', [AdminDashboard::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::get('/user', [UserController::class, 'index']);
 
 Route::post('/admin/dashboard', [LogoutController::class, 'store']);
+
+Route::get('/admin/bestmeals', [BestMeals::class, 'index']);
+
+Route::post('/admin/bestmeals', [BestMeals::class, 'store'])->name('bestmeals');
+
+Route::get('/', [HomeController::class, 'mealsAvailable']);
